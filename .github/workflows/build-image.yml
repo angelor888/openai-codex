@@ -26,6 +26,10 @@ jobs:
       id-token: write
     steps:
     - uses: actions/checkout@v4
+    - name: Install ShellCheck
+      run: sudo apt-get update && sudo apt-get install -y shellcheck
+    - name: ShellCheck
+      run: shellcheck entrypoint.sh setup_universal.sh
     - name: Log in to ghcr.io
       uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
       with:
